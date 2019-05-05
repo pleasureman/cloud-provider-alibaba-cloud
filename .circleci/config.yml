@@ -54,6 +54,21 @@ jobs:
           command: |
             gometalinter --disable-all --skip vendor --skip test -E deadcode -d ./...
 
+  code-coverage:
+    docker: 
+      - image: pouchcontainer/pouchlinter:v0.1.2
+    working_directory: /go/src/k8s.io/cloud-provider-alibaba-cloud
+    steps:
+      - checkout
+      - run: 
+          name: go test
+          command: |
+            go test -v --race -cover -covermode=atomic -coverprofile=1.out k8s.io/cloud-provider-alibaba-cloud/cloud-controller-manager k8s.io/cloud-provider-alibaba-cloud/cloud-controller-manager/controller/route
+      - run:
+          name: codecov
+          command: |
+            pwd
+
 workflows:
   version: 2
   ci:
