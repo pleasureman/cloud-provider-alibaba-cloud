@@ -23,6 +23,4 @@ workflows:
   version: 2
   ci:
     jobs:
-      - code-check
-      - markdownlint-misspell-shellcheck
       - code-coverage
