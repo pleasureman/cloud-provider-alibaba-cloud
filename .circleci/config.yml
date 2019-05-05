@@ -75,3 +75,4 @@ workflows:
     jobs:
       - code-check
       - markdownlint-misspell-shellcheck
+      - code-coverage
