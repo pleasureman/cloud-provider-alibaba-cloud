@@ -63,11 +63,11 @@ jobs:
       - run: 
           name: go test
           command: |
-            go test -v --race -cover -covermode=atomic -coverprofile=1.out k8s.io/cloud-provider-alibaba-cloud/cloud-controller-manager k8s.io/cloud-provider-alibaba-cloud/cloud-controller-manager/controller/route
+            go test -race -coverprofile=coverage.txt -covermode=atomic k8s.io/cloud-provider-alibaba-cloud/cloud-controller-manager k8s.io/cloud-provider-alibaba-cloud/cloud-controller-manager/controller/route
       - run:
           name: codecov
           command: |
-            pwd
+            bash <(curl -s https://codecov.io/bash) -t 501785e1-baf8-45f0-8e57-83683dc492b7
 
 workflows:
   version: 2
